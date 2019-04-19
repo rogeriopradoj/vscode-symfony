@@ -16,7 +16,7 @@ export class ComposerJSON {
                         let composerObj = JSON.parse(fs.readFileSync(uri.path).toString())
                         if(composerObj.require !== undefined) {
                             Object.keys(composerObj.require).forEach(key => {
-                                if(key === "symfony/symfony" || key === "symfony/lts") {
+                                if (key === "symfony/symfony" || key === "symfony/lts" || key === "symfony/flex") {
                                     resolve({
                                         symfonyVersion: parseInt(composerObj.require[key].match(/\d/)),
                                         uri: uri

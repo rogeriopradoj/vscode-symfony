@@ -17,7 +17,7 @@ class CommandOptions implements ExecSyncOptions {
 
 export class ConsoleProvider implements ContainerProviderInterface {
 
-    private _configuration = vscode.workspace.getConfiguration("symfony-vscode")
+    private _configuration = vscode.workspace.getConfiguration("symfony-debug-and-autocomplete")
     private _composerJson: ComposerJSON = new ComposerJSON()
 
     provideServiceDefinitions(): Promise<ServiceDefinition[]> {

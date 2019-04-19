@@ -19,17 +19,17 @@ export function activate(context: vscode.ExtensionContext) {
     const parameterViewProvider = new ParameterViewProvider(containerStore)
 
     vscode.window.registerTreeDataProvider("serviceDefinitionsView", serviceDefinitionViewProvider)
-    vscode.commands.registerCommand('symfony-vscode.refreshServiceDefinitionsView', () => serviceDefinitionViewProvider.refresh())
-    vscode.commands.registerCommand('symfony-vscode.toggleClassDisplay', () => serviceDefinitionViewProvider.toggleClassDisplay())
+    vscode.commands.registerCommand('symfony-debug-and-autocomplete.refreshServiceDefinitionsView', () => serviceDefinitionViewProvider.refresh())
+    vscode.commands.registerCommand('symfony-debug-and-autocomplete.toggleClassDisplay', () => serviceDefinitionViewProvider.toggleClassDisplay())
 
     vscode.window.registerTreeDataProvider("routeDefinitionsView", routeDefinitionViewProvider)
-    vscode.commands.registerCommand('symfony-vscode.refreshRouteDefinitionsView', () => routeDefinitionViewProvider.refresh())
-    vscode.commands.registerCommand('symfony-vscode.togglePathDisplay', () => routeDefinitionViewProvider.togglePathsDisplay())
+    vscode.commands.registerCommand('symfony-debug-and-autocomplete.refreshRouteDefinitionsView', () => routeDefinitionViewProvider.refresh())
+    vscode.commands.registerCommand('symfony-debug-and-autocomplete.togglePathDisplay', () => routeDefinitionViewProvider.togglePathsDisplay())
 
     vscode.window.registerTreeDataProvider("parametersView", parameterViewProvider)
-    vscode.commands.registerCommand('symfony-vscode.refreshParametersView', () => parameterViewProvider.refresh())
+    vscode.commands.registerCommand('symfony-debug-and-autocomplete.refreshParametersView', () => parameterViewProvider.refresh())
 
-    if(vscode.workspace.getConfiguration("symfony-vscode").get("enableFileWatching")) {
+    if(vscode.workspace.getConfiguration("symfony-debug-and-autocomplete").get("enableFileWatching")) {
         let fileWatchController = new FileWatchController(serviceDefinitionViewProvider, routeDefinitionViewProvider, parameterViewProvider)
         context.subscriptions.push(fileWatchController)
     }
